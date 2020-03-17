@@ -4,28 +4,39 @@
 
 
     <div class="row">
-        <div class="col-md-8">
+        
+        	<div class="col-md-8 col-sm-12">
+              <div class="notification notification--warning">
+                <div class="notification__content">
+                  <div class="notification__type">LET OP</div>
+                  <h2 class="notification__title">Behoord u tot de doelgroep cruciale beroepen?</h2>
+                  <span>Dan heeft u nog steeds recht op kinderopvang, u kunt <a href="#">hier</a> lezen hoe en aan wie u dit kan doorgeven.</span>
+                </div>
+              </div>
 
-            <div class="content-background" style="background-image: url('https://picsum.photos/id/1/860/300'); height: 300px;">
+            <div class="content-background" style="height: 170px;">
             	<div class="content">
+                    <h2>Informatie over Corona in Utrecht</h2>
+                    
+                    Via deze webpagina probeerd de Gemeente Utrecht u op de hoogte te houden van locale ontwikellingen en maatregellen met betrekking tot Corona.
 
                 </div><!-- /.content -->
             </div><!-- /.content-background -->
         </div><!-- /.col -->
 
-        <div class="col-md-4">
-            <div class="content-background background--donkerblauw" style="height: 300px;">
+        <div class="col-md-4  col-sm-12">
+            <div class="content-background background--donkerblauw" style="height: 306px;">
                 <div class="content">
-                    <h2>Bijeenkomsten</h2>
+                    <h2>Belangrijke informatie</h2>
                     <ul class="list list--links list--chevrons">
                         <li>
-                            <a href="{{ path('app_event_view', { 'id': 1 }) }}"><b>12-3-2020 Amsterdam</b><br />De staat van de stad</a>
+                            <a href="{# path('app_event_view', { 'id': 1 }) #}">Ding 1</a>
                         </li>
                         <li>
-                            <a href="{{ path('app_event_view', { 'id': 2 }) }}"><b>12-3-2020 Den Haag</b><br />De staat van de stad</a>
+                            <a href="{# path('app_event_view', { 'id': 1 }) #}">Ding 2</a>
                         </li>
                         <li>
-                            <a href="{{ path('app_event_view', { 'id': 3 }) }}"><b>12-3-2020 Utrecht</b><br />De staat van de stad</a>
+                            <a href="{# path('app_event_view', { 'id': 1 }) #}">Ding 3</a>
                         </li>
                     </ul>
 
@@ -55,29 +66,29 @@
             <h2> Uitgelicht</h2>
             <ul class="list list--card">
                 <li class="card">
-                    <a href="{{ path('app_challenge_index') }}" class="card__content">
+                    <a href="{# path('app_challenge_index') #}" class="card__content">
                         <div class="card__thumb" style="background-image: url('https://picsum.photos/id/1/200')"></div>
                         <div class="card__body">
-                            <span class="card__title">Challenges</span>
-                            Bekijk challanges en beloningen vanuit de overheid
+                            <span class="card__title">Ik heb hulp nodig</span>
+                            Heeft u behoefte aan hulp? Bijvoorbeeld omdat u geen eten meer in huis heeft, of ergens niet uit komt? <br><br> Lees hier hoe u aan hulp kan komen.
                         </div>
                     </a>
                 </li>
                 <li class="card">
-                    <a href="{{ path('app_pitch_index') }}" class="card__content">
+                    <a href="{# path('app_pitch_index') #}" class="card__content">
                         <div class="card__thumb" style="background-image: url('https://picsum.photos/id/1/200')"></div>
                         <div class="card__body">
-                        	<span class="card__title">Pitches</span>
-                        	Bekijk goede ideën vanuit de community
+                        	<span class="card__title">Ik wil helpen</span>
+                        	Wilt u hult aanbieden? Bijvoorbeeld omdat u beschikt over bepaalde vaardigheden of inventaris. <br><br>Lees hier hoe u dat kenbaar kan maken.
                         </div>
                     </a>
                 </li>
                 <li class="card">
-                    <a href="{{ path('app_news_index') }}" class="card__content">
+                    <a href="{# path('app_news_index') #}" class="card__content">
                         <div class="card__thumb" style="background-image: url('https://picsum.photos/id/1/200')"></div>
                         <div class="card__body">
-                        	<span class="card__title">Nieuws</span>
-                        	Volg het laatste nieuws
+                        	<span class="card__title">Ik denk dat ik Corona heb</span>
+                        	Vermoed u dat u zelf besmet bent met het corona virus? <br><br><br>  Lees dan hier wat u moet doen
                         </div>
                     </a>
                 </li>
