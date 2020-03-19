@@ -28,32 +28,32 @@
 
     
     <link rel="stylesheet" href="/uno/components/button/button.css">
-<link rel="stylesheet" href="/uno/components/card/card.css">
-<link rel="stylesheet" href="/uno/components/collapse/collapse.css">
-<link rel="stylesheet" href="/uno/components/form/checkbox.css">
-<link rel="stylesheet" href="/uno/components/form/filter.css">
-<link rel="stylesheet" href="/uno/components/form/form.css">
-<link rel="stylesheet" href="/uno/components/form/input.css">
-<link rel="stylesheet" href="/uno/components/form/radio.css">
-<link rel="stylesheet" href="/uno/components/hint/hint.css">
-<link rel="stylesheet" href="/uno/components/label/label.css">
-<link rel="stylesheet" href="/uno/components/list/definition-list.css">
-<link rel="stylesheet" href="/uno/components/list/list-card.css">
-<link rel="stylesheet" href="/uno/components/list/list-grid.css">
-<link rel="stylesheet" href="/uno/components/list/list-files.css">
-<link rel="stylesheet" href="/uno/components/list/list-notification.css">
-<link rel="stylesheet" href="/uno/components/list/list-subject.css">
-<link rel="stylesheet" href="/uno/components/list/list-search.css">
-<link rel="stylesheet" href="/uno/components/list/list-timeline.css">
-<link rel="stylesheet" href="/uno/components/list/list-filter.css">
-<link rel="stylesheet" href="/uno/components/meta/meta.css">
-<link rel="stylesheet" href="/uno/components/navigation/inpage.css">
-<link rel="stylesheet" href="/uno/components/notification/notification.css">
-<link rel="stylesheet" href="/uno/components/pagination/pagination.css">
-<link rel="stylesheet" href="/uno/components/quote/quote.css">
-<link rel="stylesheet" href="/uno/components/section/edit-section.css">
-<link rel="stylesheet" href="/uno/components/section/inner-section.css">
-<link rel="stylesheet" href="/uno/components/table/table.css">
+    <link rel="stylesheet" href="/uno/components/card/card.css">
+    <link rel="stylesheet" href="/uno/components/collapse/collapse.css">
+    <link rel="stylesheet" href="/uno/components/form/checkbox.css">
+    <link rel="stylesheet" href="/uno/components/form/filter.css">
+    <link rel="stylesheet" href="/uno/components/form/form.css">
+    <link rel="stylesheet" href="/uno/components/form/input.css">
+    <link rel="stylesheet" href="/uno/components/form/radio.css">
+    <link rel="stylesheet" href="/uno/components/hint/hint.css">
+    <link rel="stylesheet" href="/uno/components/label/label.css">
+    <link rel="stylesheet" href="/uno/components/list/definition-list.css">
+    <link rel="stylesheet" href="/uno/components/list/list-card.css">
+    <link rel="stylesheet" href="/uno/components/list/list-grid.css">
+    <link rel="stylesheet" href="/uno/components/list/list-files.css">
+    <link rel="stylesheet" href="/uno/components/list/list-notification.css">
+    <link rel="stylesheet" href="/uno/components/list/list-subject.css">
+    <link rel="stylesheet" href="/uno/components/list/list-search.css">
+    <link rel="stylesheet" href="/uno/components/list/list-timeline.css">
+    <link rel="stylesheet" href="/uno/components/list/list-filter.css">
+    <link rel="stylesheet" href="/uno/components/meta/meta.css">
+    <link rel="stylesheet" href="/uno/components/navigation/inpage.css">
+    <link rel="stylesheet" href="/uno/components/notification/notification.css">
+    <link rel="stylesheet" href="/uno/components/pagination/pagination.css">
+    <link rel="stylesheet" href="/uno/components/quote/quote.css">
+    <link rel="stylesheet" href="/uno/components/section/edit-section.css">
+    <link rel="stylesheet" href="/uno/components/section/inner-section.css">
+    <link rel="stylesheet" href="/uno/components/table/table.css">
     
 
     
@@ -104,7 +104,40 @@
 	{% include "menu.html.twig" %}
 
     <main class="skiplink-target main" id="content" tabindex="-1">    
-        <div class="container">    
+		<div class="container">    
+    	
+    	    {% for label, messages in app.flashes(['warning', 'error', 'success','info']) %}
+                {% for message in messages %}
+                  <div class="notification notification--{{ label }}">
+                    <div class="notification__content">
+                      <h2 class="notification__title">{{ message }}</h2>
+                    </div>
+                  </div>
+                {% endfor %}
+            {% endfor %}
+            	
+            <!-- the alert box -->
+            {% if app.session.flashbag.peekAll|length > 0 %}
+                {% set datadelay = 0 %}
+                {% for type, messages in app.session.flashbag.all %}
+                    {% for message in messages %}
+                    
+                    
+                        {% set datadelay = ( counter | default(0) ) + 3000 %}
+                        <!-- .row -->
+                        <div class="row animation save-confirmation" data-animation="animation-bounce-out" data-delay="{{ datadelay }}">
+                            <div class="post-heading-center animation" data-animation="animation-fade-in-down">
+                                <h2>{{ message|trans({}, domain|default('messages')) }}</h2>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <i class="fas fa-check fa-6x animation" data-animation="animation-fade-in-down" ></i>
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+            <!-- end of the alert box -->	
+        
           {% block content %}
 
           {% endblock %}
