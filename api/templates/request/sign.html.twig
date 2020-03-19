@@ -8,7 +8,7 @@
                 <header class="content__header">
                     <a class="backlink" href="{{ path('app_default_index') }}">Home</a>
                     <header class="content__header">
-                        <h1 class="content__header-title">{{ request.name }}</h1>
+                        <h1 class="content__header-title">{{ request.reference }}</h1>
                     </header>
                 </header>
             </div><!-- ./content -->
@@ -17,11 +17,15 @@
 
     <div class="row">
         
+        <div class="col-md-8  col-sm-12">
             <div class="content-background" style="height: 170px;">
             	<div class="content">
                     <h2>Ondertekening</h2>
                     
-                    Via dit formulier kunt u ondersteuning aanvragen als zzper
+                    << overizcht opgegeven gegevens >>
+                    
+                    
+                    <a class="btn" href="{{ path('app_default_index') }}">Begin</a>
 
                 </div><!-- /.content -->
             </div><!-- /.content-background -->
@@ -40,7 +44,7 @@
             <!-- Page Break -->
             <div style="height: 20px"></div>
                 
-            <div class="content-background background--donkerblauw">                
+            <div class="content-background">                
                 <div class="content">
                     <h2>Stappen</h2>
                  	<ul class="list list--timeline list--timeline-compact">

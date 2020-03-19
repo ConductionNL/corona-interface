@@ -8,7 +8,7 @@
                 <header class="content__header">
                     <a class="backlink" href="{{ path('app_default_index') }}">Home</a>
                     <header class="content__header">
-                        <h1 class="content__header-title">{{ request.name }}</h1>
+                        <h1 class="content__header-title">{{ request.reference }}</h1>
                     </header>
                 </header>
             </div><!-- ./content -->
@@ -17,9 +17,11 @@
 
     <div class="row">
         
-            <div class="content-background" style="height: 170px;">
+        <div class="col-md-8  col-sm-12">
+        
+            <div class="content-background">
             	<div class="content">
-                    <h2>Gegvens</h2>
+                    <h2>Gegevens</h2>
                     
                     <form class="form" method="post" action="#">
 
@@ -89,8 +91,8 @@
                             <textarea id="textarea_voorbeeld" class="input__control input__control--m input__control--text"></textarea>
                         </div>
                 
-                        <div class="input">
-                            <button type="submit" class="btn ">Verder</button>&nbsp;&nbsp;of naar de <a href="#">vorige stap</a>
+                        <div class="input"> 
+                            {# <button type="submit" class="btn ">Verder</button> #} <a class="btn " href="{{ path('app_request_sign') }}">Verder</a> &nbsp;&nbsp;of naar de <a href="{{ path('app_request_new') }}">vorige stap</a>
                         </div>
                     </form>    
 
@@ -99,8 +101,7 @@
         </div><!-- /.col -->
 
         <div class="col-md-4  col-sm-12">
-            <div class="content-background">
-                        
+            <div class="content-background">                        
                 <div class="content">
                     <h2>Uw gegevens</h2>                    
                     
@@ -111,7 +112,7 @@
             <!-- Page Break -->
             <div style="height: 20px"></div>
                 
-            <div class="content-background background--donkerblauw">                
+            <div class="content-background">                
                 <div class="content">
                     <h2>Stappen</h2>
                  	<ul class="list list--timeline list--timeline-compact">
@@ -121,7 +122,6 @@
                 		<li class="list__item list__item--disabled" >In behandeling</li>
                 		<li class="list__item list__item--disabled">Uitsluitsel</li>
                 	</ul>
-
                 </div>
             </div>
             

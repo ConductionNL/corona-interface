@@ -16,8 +16,6 @@ use App\Service\ApplicationService;
 /**
  * Class DefaultController
  * @package App\Controller
- * 
- * 
  * @Route("/request") 
  */
 class RequestController extends AbstractController
@@ -25,15 +23,36 @@ class RequestController extends AbstractController
     
     /**
      * @Route("/new") 
+     * @Template
      */
 	public function newAction(Request $httpRequest, ApplicationService $applicationService,  CommonGroundService $commonGroundService)
     {
     	$variables = $applicationService->getVariables();
-    	
-    	
-    	
+    	    	
     	return $variables;
-    }
+	}
+	
+	/**
+	 * @Route("/data")
+     * @Template
+	 */
+	public function dataAction(Request $httpRequest, ApplicationService $applicationService,  CommonGroundService $commonGroundService)
+	{
+		$variables = $applicationService->getVariables();
+		
+		return $variables;
+	}
+	
+	/**
+	 * @Route("/sign")
+     * @Template
+	 */
+	public function signAction(Request $httpRequest, ApplicationService $applicationService,  CommonGroundService $commonGroundService)
+	{
+		$variables = $applicationService->getVariables();
+		
+		return $variables;
+	}
     
     
     /**
