@@ -28,7 +28,19 @@
         </div><!-- /.col -->
 
         <div class="col-md-4  col-sm-12">
-            <div class="content-background background--donkerblauw" style="height: 306px;">
+            <div class="content-background">
+                        
+                <div class="content">
+                    <h2>Uw gegevens</h2>                    
+                    
+                    {{ user.naam.geslachtsnaam }}, {{ user.naam.voornamen }} 
+                </div>
+            </div>
+                    
+            <!-- Page Break -->
+            <div style="height: 20px"></div>
+                
+            <div class="content-background background--donkerblauw">                
                 <div class="content">
                     <h2>Stappen</h2>
                  	<ul class="list list--timeline list--timeline-compact">
@@ -38,7 +50,6 @@
                 		<li class="list__item list__item--disabled" >In behandeling</li>
                 		<li class="list__item list__item--disabled">Uitsluitsel</li>
                 	</ul>
-
                 </div>
             </div>
             
