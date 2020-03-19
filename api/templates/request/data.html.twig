@@ -22,13 +22,8 @@
                     <h2>Gegvens</h2>
                     
                     <form class="form" method="post" action="#">
-                        <div class="input">
-                            <label class="input__label" for="brin">Kvk-nummer</label>
-                            <input type="text" id="brin" class="input__control input__control--m input__control--text">
-                            <button class="btn">Gegevens ophalen</button>
-                        </div>
 
-                        
+                        <h3>Aanvullende contact gegeven</h3>
                         <div class="input">
                             <label class="input__label" for="email">E-mailadres</label>
                             <input required="" type="email" id="email" class="input__control input__control--text">
@@ -38,9 +33,65 @@
                             <label class="input__label" for="email">Telefoon nummer</label>
                             <input required="" type="email" id="email" class="input__control input__control--text">
                         </div>
+                                            
+                        <h3>Gegevens van uw Onderneming</h3>
+                        <div class="input">
+                            <label class="input__label" for="brin">Kvk-nummer</label>
+                            <input type="text" id="brin" class="input__control input__control--m input__control--text">
+                            <button class="btn">Gegevens ophalen</button>
+                        </div>
+                            
+                        <div class="input">
+                            <label class="input__label" for="email">Naam onderneming</label>
+                            <input disabled="" type="email" id="email" class="input__control input__control--text">
+                        </div>
+                
+                        <div class="input">
+                        	<label class="input__label">Adres gegens onderneming</label>
+                    
+                        	<div class="input__control-group">
+                        		<div>
+                                	<label class="input__hint" for="address_postal_code">postcode</label>
+                                 	<input aria-label="Postcode" title="Postcode" disabled="" type="text" pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}" id="address_postal_code" class="input__control input__control--six-characters input__control--text">
+                             	</div>
+                             	<div>
+                              		<label class="input__hint" for="address_number">huisnummer</label>
+                         			<input aria-label="Huisnummer" title="Huisnummer" disabled="" type="number" minlength="1" maxlength="5" id="address_number" class="input__control input__control--five-characters input__control--text">
+                          		</div>
+                                    <div>
+                                        <span class="input__hint" for="address_number-addition">toevoeging</span>
+                                        <input aria-label="Toevoeging" title="Toevoeging" disabled=""" type="text" maxlength="5" id="address_number-addition" class="input__control input__control--five-characters input__control--text">
+                                    </div>
+                                </div>
+                         </div>                         
+                         
+                        <h3>Aanvragen</h3>
                         
+                        <fieldset class="input">
+                            <legend class="input__legend">Welke regelingen wilt u aanvragen?</legend>
+                            <div class="input__group input__group--checkbox">
+                                <input name="hobbies[]" type="checkbox" id="chkbx1" class="input__control input__control--checkbox">
+                                <label class="input__label input__label--checkbox" for="chkbx1">Eenmalige uitkering van 4000 euro</label>
+                            </div>
+                            <div class="input__group input__group--checkbox">
+                                <input name="hobbies[]" type="checkbox" id="chkbx2" class="input__control input__control--checkbox">
+                                <label class="input__label input__label--checkbox" for="chkbx2">Uitstel betaling belating toegevoegde waarde</label>
+                            </div>
+                            <div class="input__group input__group--checkbox">
+                                <input name="hobbies[]" type="checkbox" id="chkbx3" class="input__control input__control--checkbox" >
+                                <label class="input__label input__label--checkbox" for="chkbx3">Uitstel betaling inkomsten belasting</label>
+                            </div>
+                        </fieldset>
                         
-                        <button class="btn" type="submit">Inloggen</button> 
+                        <h3>Toelichting</h3>
+                        <div class="input">
+                            <label class="input__label" for="textarea_voorbeeld">Waarom wilt u van de door uw aangegeven regelingen gebruik maken?</label>
+                            <textarea id="textarea_voorbeeld" class="input__control input__control--m input__control--text"></textarea>
+                        </div>
+                
+                        <div class="input">
+                            <button type="submit" class="btn ">Verder</button>&nbsp;&nbsp;of naar de <a href="#">vorige stap</a>
+                        </div>
                     </form>    
 
                 </div><!-- /.content -->
