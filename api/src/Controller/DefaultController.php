@@ -4,13 +4,15 @@
 
 namespace App\Controller;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 use App\Service\CommonGroundService;
+use App\Service\RequestService;
+use App\Service\ApplicationService;
 
 /**
  * Class DefaultController
@@ -18,14 +20,34 @@ use App\Service\CommonGroundService;
  */
 class DefaultController extends AbstractController
 {
-
+    
+    /**
+     * @Route("/logout")
+     */
+    public function logoutAction(Session $session)
+    {
+    	$session->set('requestType', false);
+    	$session->set('request', false);
+    	$session->set('user', false);
+    	$session->set('employee', false);
+    	$session->set('contact', false);
+    	
+    	$this->addFlash('danger', 'U bent uitgelogd');
+    	
+    	return $this->redirect($this->generateUrl('app_default_slug', ["slug" => "trouwen"]));
+    }
+    
+    
     /**
      * @Route("/")
+     * @Route("/page/{slug}", name="app_default_slug")
      * @Template
      */
-	public function indexAction()
-    {	
-    	return [];
+    public function indexAction(Session $session, $slug = false, Request $httpRequest, CommonGroundService $commonGroundService, ApplicationService $applicationService, RequestService $requestService)
+    {
+    	$variables = $applicationService->getVariables();
+    	
+    	return $variables;
     }
 }
 

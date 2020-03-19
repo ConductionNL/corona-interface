@@ -8,7 +8,7 @@
                             <span>Home</span>
                         </a>
                     </li>
-
+					{#
                     <li class="nav__item"><a class="nav__link " href="#">Voor inwoners</a></li>                    
                     
                     <li class="nav__item"><a class="nav__link " href="#">Voor bedrijven</a></li>                  
@@ -16,13 +16,17 @@
                     <li class="nav__item"><a class="nav__link " href="#">Voor verenigingen</a></li>                   
                     
                     <li class="nav__item"><a class="nav__link " href="#">For Tourists</a></li>                    
-                    
+                    #}
+                   {% if user is empty%}                
                     <li class="nav__item">
-                        <a href="{{ path('app_user_index') }}" title="Home" class="nav__link  ">
+                        <a href="http://digispoof.zaakonline.nl?responceUrl={{ absolute_url(path('app_default_index')) }}" title="Inloggen" class="nav__link  ">
                             <i class="icon icon-user" role="presentation"></i>
                             <span>Inloggen</span>
                         </a>
                     </li>
+                    {% else %}                    
+                    <li class="nav__item"><a class="nav__link " href="{{ path('app_default_logout') }}">Logout</a></li>             
+                    {% endif %}
 
                 </ul>
             </div>
