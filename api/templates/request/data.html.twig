@@ -2,32 +2,53 @@
 
 {% block content %}
 
+    <section class="row">
+        <div class="col-md-12">
+            <div class="content">
+                <header class="content__header">
+                    <a class="backlink" href="{{ path('app_default_index') }}">Home</a>
+                    <header class="content__header">
+                        <h1 class="content__header-title">{{ request.name }}</h1>
+                    </header>
+                </header>
+            </div><!-- ./content -->
+        </div><!-- ./col -->
+    </section>
 
     <div class="row">
         
-        	<div class="col-md-8 col-sm-12">
-              <div class="notification notification--warning">
-                <div class="notification__content">
-                  <div class="notification__type">LET OP</div>
-                  <h2 class="notification__title">Behoort u tot de doelgroep cruciale beroepen?</h2>
-                  <span>Dan heeft u nog steeds recht op kinderopvang, u kunt <a href="#">hier</a> lezen hoe en aan wie u dit kan doorgeven.</span>
-                </div>
-              </div>
-
             <div class="content-background" style="height: 170px;">
             	<div class="content">
-                    <h2>Informatie over Corona in Utrecht</h2>
+                    <h2>Gegvens</h2>
                     
-                    Via deze webpagina probeert de Gemeente Utrecht u op de hoogte te houden van locale ontwikellingen en maatregellen met betrekking tot Corona.
+                    <form class="form" method="post" action="#">
+                        <div class="input">
+                            <label class="input__label" for="brin">Kvk-nummer</label>
+                            <input type="text" id="brin" class="input__control input__control--m input__control--text">
+                            <button class="btn">Gegevens ophalen</button>
+                        </div>
+
+                        
+                        <div class="input">
+                            <label class="input__label" for="email">E-mailadres</label>
+                            <input required="" type="email" id="email" class="input__control input__control--text">
+                        </div>
+                        
+                        <div class="input">
+                            <label class="input__label" for="email">Telefoon nummer</label>
+                            <input required="" type="email" id="email" class="input__control input__control--text">
+                        </div>
+                        
+                        
+                        <button class="btn" type="submit">Inloggen</button> 
+                    </form>    
 
                 </div><!-- /.content -->
             </div><!-- /.content-background -->
         </div><!-- /.col -->
 
         <div class="col-md-4  col-sm-12">
-        
-            {% if user is not empty%}                
-            <div class="content-background" style="height: 306px;">
+            <div class="content-background">
                         
                 <div class="content">
                     <h2>Uw gegevens</h2>                    
@@ -38,17 +59,17 @@
                     
             <!-- Page Break -->
             <div style="height: 20px"></div>
-            
-            {% endif %}
                 
-            <div class="content-background background--donkerblauw" style="height: 306px;">         
+            <div class="content-background background--donkerblauw">                
                 <div class="content">
-                    <h2>Aanvraag doen</h2>
-                    <ul class="list list--links list--chevrons">
-                        <li>
-                            <a href="{{  path('app_request_new', { 'requestType': 'https://vtc.dev.zaakonline.nl/request_types/90ad9841-bb57-44ee-beaa-b3e0a144626e' }) }}">Ondersteunings aanvraag ZZPerw</a>
-                        </li>
-                    </ul>
+                    <h2>Stappen</h2>
+                 	<ul class="list list--timeline list--timeline-compact">
+                		<li class="list__item">Instructie</li>
+                		<li class="list__item list__item--active">Gegevens verzamelen</li>
+                		<li class="list__item">Ondertekening</li>
+                		<li class="list__item list__item--disabled" >In behandeling</li>
+                		<li class="list__item list__item--disabled">Uitsluitsel</li>
+                	</ul>
 
                 </div>
             </div>
