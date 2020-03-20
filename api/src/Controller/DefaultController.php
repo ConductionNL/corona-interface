@@ -32,9 +32,9 @@ class DefaultController extends AbstractController
     	$session->set('employee', false);
     	$session->set('contact', false);
     	
-    	$this->addFlash('danger', 'U bent uitgelogd');
+    	$this->addFlash('info', 'U bent uitgelogd');
     	
-    	return $this->redirect($this->generateUrl('app_default_slug', ["slug" => "trouwen"]));
+    	return $this->redirect($this->generateUrl('app_default_index'));
     }
     
     

@@ -14,11 +14,19 @@
                 </div>
               </div>
 
-            <div class="content-background" style="height: 170px;">
+            <div class="content-background" >
             	<div class="content">
-                    <h2>Informatie over Corona in Utrecht</h2>
-                    
-                    Via deze webpagina probeert de Gemeente Utrecht u op de hoogte te houden van locale ontwikellingen en maatregellen met betrekking tot Corona.
+                    <h2>Proof of concept Centrale Corona Interface</h2>
+                    <p>Deze applicatie dient als proof of concept voor het centraal verzamelen en decentraal verdelen van informatie door de overheid. Waarbij het uitgangspunt is dat er &eacute;&eacute;n loket is voor burgers om informatie door te geven in &eacute;&eacute;n voor de burger samenhangend formulier.<br /> <br /> Centrale en decentrale overheden kunnen deze informatie vervolgens verwerken, met andere woorden de verwerking en wie dat doet (Belastingdienst, Gemeente, RVO etc) is een overheids probleem waar de burger niet mee moeten lastig vallen.<br /> <br /> In verlengde daarvan kunnen we spelen met de gedachte om burgers via vertrouwde overheid omgevingen informatie ter beschikking van derden te stellen (rodekruis, voedselbanken en overige vrijwilligers organisaties) 
+                    <br /> <br /> Waardes</p>
+                    <ul>
+                        <li>Vertrouwen (overheid beheerd gegevens, digi&rsquo;s, herkenbaarheid)</li>
+                        <li>&Eacute;&eacute;n loket (waar vanuit meerdere diensten van gegevens kunnen worden voorzien)</li>
+                        <li>Deelbaarheid (burger kan gegevens inzien en ontsluiten)</li>
+                        <li>Opensource</li>
+                        <li>Nieuwe technologie (alles aan de hand van gecontaineriseerde rest api&rsquo;s en microservices)</li>
+                    </ul>
+					<p>Dit alles kan worden gerealiseerd door een escalatie van de door gemeenten onder commonground gerealiseerde architectuur.</p>
 
                 </div><!-- /.content -->
             </div><!-- /.content-background -->
@@ -27,12 +35,63 @@
         <div class="col-md-4  col-sm-12">
         
             {% if user is not empty%}                
-            <div class="content-background" style="height: 306px;">
+            <div class="content-background">
                         
                 <div class="content">
-                    <h2>Uw gegevens</h2>                    
-                    
-                    {{ user.naam.geslachtsnaam }}, {{ user.naam.voornamen }} 
+                    <h2>Uw gegevens</h2>  
+    				<ul class="definition-list">
+    					<li class="definition-list__item definition-list__item--horizontal">
+    						<div class="definition-list__title">
+    							 Voornamen
+    						</div>
+    						<div class="definition-list__description">
+    							<p>{{ user.naam.voornamen }}</p>
+    						</div>
+    					</li>
+    					<li class="definition-list__item definition-list__item--horizontal">
+    						<div class="definition-list__title">
+    							Achternaam
+    						</div>
+    						<div class="definition-list__description">
+    							<p>{{ user.naam.geslachtsnaam }}</p> 
+    						</div>
+    					</li>
+                        {% if user.naam.voorvoegsel is not empty%}    
+    					<li class="definition-list__item definition-list__item--horizontal">
+    						<div class="definition-list__title">
+    							Voorvoegsel
+    						</div>
+    						<div class="definition-list__description">
+    							<p>{{ user.naam.voorvoegsel }}</p> 
+    						</div>
+    					</li>
+    					<li class="definition-list__item definition-list__item--horizontal">
+    						<div class="definition-list__title">
+    							Leeftijd
+    						</div>
+    						<div class="definition-list__description">
+    							<p>{{ user.leeftijd }}</p> 
+    						</div>
+    					</li>
+    					<li class="definition-list__item definition-list__item--horizontal">
+    						<div class="definition-list__title">
+    							Geslacht
+    						</div>
+    						<div class="definition-list__description">
+    							<p>{{ user.geslachtsaanduiding }}</p> 
+    						</div>
+    					</li>
+    					{% endif %}
+    					<li class="definition-list__item definition-list__item--horizontal">
+    						<div class="definition-list__title">
+    							Addres
+    						</div>
+    						<div class="definition-list__description">
+    							<p>{{ user.verblijfplaats.straatnaam }} {{ user.verblijfplaats.huisnummer }}{{ user.verblijfplaats.huisletter }}{{ user.verblijfplaats.huisnummertoevoeging }}
+    							<br>{{ user.verblijfplaats.postcode }} {{ user.verblijfplaats.woonplaatsnaam }}</p>
+    						</div>
+    					</li>
+    				</ul>
                 </div>
             </div>
                     
@@ -44,11 +103,25 @@
             <div class="content-background background--donkerblauw" style="height: 306px;">         
                 <div class="content">
                     <h2>Aanvraag doen</h2>
+                    {% if user is not empty%}        
                     <ul class="list list--links list--chevrons">
                         <li>
                             <a href="{{  path('app_request_new', { 'requestType': 'https://vtc.dev.zaakonline.nl/request_types/90ad9841-bb57-44ee-beaa-b3e0a144626e' }) }}">Ondersteunings aanvraag ZZPers</a>
                         </li>
+                        <!-- 
+                        <li>
+                            <a href="{{  path('app_request_new', { 'requestType': 'https://vtc.dev.zaakonline.nl/request_types/d78197df-af77-4b5e-bed0-054cba047550' }) }}">Aanvraag bijzondere bijstand</a>
+                        </li>
+                        <li>
+                            <a href="{{  path('app_request_new', { 'requestType': 'https://vtc.dev.zaakonline.nl/request_types/64127a29-c452-4600-a9a0-b3f827b4d2e5' }) }}">Ik wil helpen</a>
+                        </li>
+                        <li>
+                            <a href="{{  path('app_request_new', { 'requestType': 'https://vtc.dev.zaakonline.nl/request_types/2201ebbd-f2b0-4ece-88e0-18ba0d2949e0' }) }}">Ik heb hulp nodig</a>
+                        </li> -->
                     </ul>
+                    {% else %}                    
+                    	U dient eerst in te loggen voordat u een aanvrag kan doen.
+                    {% endif %}
 
                 </div>
             </div>
