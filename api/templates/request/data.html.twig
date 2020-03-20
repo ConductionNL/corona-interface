@@ -83,6 +83,10 @@
                                 <input name="hobbies[]" type="checkbox" id="chkbx3" class="input__control input__control--checkbox" >
                                 <label class="input__label input__label--checkbox" for="chkbx3">Uitstel betaling inkomsten belasting</label>
                             </div>
+                            <div class="input__group input__group--checkbox">
+                                <input name="hobbies[]" type="checkbox" id="chkbx4" class="input__control input__control--checkbox" >
+                                <label class="input__label input__label--checkbox" for="chkbx3">Bijzondere bijstand</label>
+                            </div>
                         </fieldset>
                         
                         <h3>Toelichting</h3>
@@ -104,8 +108,59 @@
             <div class="content-background">                        
                 <div class="content">
                     <h2>Uw gegevens</h2>                    
-                    
-                    {{ user.naam.geslachtsnaam }}, {{ user.naam.voornamen }} 
+    				<ul class="definition-list">
+    					<li class="definition-list__item definition-list__item--horizontal">
+    						<div class="definition-list__title">
+    							 Voornamen
+    						</div>
+    						<div class="definition-list__description">
+    							<p>{{ user.naam.voornamen }}</p>
+    						</div>
+    					</li>
+    					<li class="definition-list__item definition-list__item--horizontal">
+    						<div class="definition-list__title">
+    							Achternaam
+    						</div>
+    						<div class="definition-list__description">
+    							<p>{{ user.naam.geslachtsnaam }}</p> 
+    						</div>
+    					</li>
+                        {% if user.naam.voorvoegsel is not empty%}    
+    					<li class="definition-list__item definition-list__item--horizontal">
+    						<div class="definition-list__title">
+    							Voorvoegsel
+    						</div>
+    						<div class="definition-list__description">
+    							<p>{{ user.naam.voorvoegsel }}</p> 
+    						</div>
+    					</li>
+    					<li class="definition-list__item definition-list__item--horizontal">
+    						<div class="definition-list__title">
+    							Leeftijd
+    						</div>
+    						<div class="definition-list__description">
+    							<p>{{ user.leeftijd }}</p> 
+    						</div>
+    					</li>
+    					<li class="definition-list__item definition-list__item--horizontal">
+    						<div class="definition-list__title">
+    							Geslacht
+    						</div>
+    						<div class="definition-list__description">
+    							<p>{{ user.geslachtsaanduiding }}</p> 
+    						</div>
+    					</li>
+    					{% endif %}
+    					<li class="definition-list__item definition-list__item--horizontal">
+    						<div class="definition-list__title">
+    							Addres
+    						</div>
+    						<div class="definition-list__description">
+    							<p>{{ user.verblijfplaats.straatnaam }} {{ user.verblijfplaats.huisnummer }}{{ user.verblijfplaats.huisletter }}{{ user.verblijfplaats.huisnummertoevoeging }}
+    							<br>{{ user.verblijfplaats.postcode }} {{ user.verblijfplaats.woonplaatsnaam }}</p>
+    						</div>
+    					</li>
+    				</ul>
                 </div>
             </div>
                     
