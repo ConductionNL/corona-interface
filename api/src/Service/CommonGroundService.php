@@ -169,7 +169,7 @@ class CommonGroundService
 		if($statusCode != 200 && !$this->proccesErrors($response, $statusCode, $headers, null , $url, 'GET')){
 			return false;
 		}
-		
+
         $parsedUrl = parse_url($url);
 		if(array_key_exists('@id', $response) && $response['@id']){
 			$response['@id'] = $parsedUrl["scheme"]."://".$parsedUrl["host"].$response['@id'];
@@ -335,10 +335,26 @@ class CommonGroundService
 			if($this->updateResource($resource)){
 				// Lets renew the resource
 				$resource= $this->getResource($resource['@id']);
-				$this->flash->add('success', $resource['name'].' '.$this->translator->trans('saved'));
+				if(key_exists('name', $resource)){
+                    $this->flash->add('success', $resource['name'].' '.$this->translator->trans('saved'));
+                }
+                elseif(key_exists('reference', $resource)){
+                    $this->flash->add('success', $resource['reference'].' '.$this->translator->trans('saved'));
+                }
+                else{
+                    $this->flash->add('success', $resource['id'].' '.$this->translator->trans('saved'));
+                }
 			}
 			else{
-				$this->flash->add('error', $resource['name'].' '.$this->translator->trans('could not be saved'));
+                if(key_exists('name', $resource)) {
+                    $this->flash->add('error', $resource['name'] . ' ' . $this->translator->trans('could not be saved'));
+                }
+                elseif(key_exists('reference', $resource)){
+                    $this->flash->add('error', $resource['reference'] . ' ' . $this->translator->trans('could not be saved'));
+                }
+                else{
+                    $this->flash->add('error', $resource['id'] . ' ' . $this->translator->trans('could not be saved'));
+                }
 			}
 		}
 		else{
