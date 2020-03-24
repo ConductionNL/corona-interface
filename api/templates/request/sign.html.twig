@@ -65,7 +65,7 @@
                     </ul>
 
                     <h3>Gegevens van uw bedrijf:</h3>
-                    <ul>
+                    <ul class="definition-list">
                         {% if request.properties.kvk is defined and request.properties.kvk is not empty %}
                             <li class="definition-list__item definition-list__item--horizontal">
                                 <div class="definition-list__title">
@@ -96,30 +96,53 @@
                                 </div>
                             </li>
                         {% endif %}
+                        {% if request.properties.sbi is defined and request.properties.sbi is not empty %}
+                            <li class="definition-list__item definition-list__item--horizontal">
+                                <div class="definition-list__title">
+                                    SBI Code
+                                </div>
+                                <div class="definition-list__description">
+                                    <p>{{ request.properties.sbi }}</p>
+                                </div>
+                            </li>
+                        {% endif %}
                     </ul>
                     <h3>Aangevraagde ondersteuning</h3>
-                    <ul>
+                    <ul class="definition-list">
                         {% if request.properties.choices is defined and request.properties.choices is not empty %}
                             <li class="definition-list__item definition-list__item--horizontal">
                                 <div class="definition-list__title">
                                     Aangevraagde maatregelen
                                 </div>
                                 <div class="definition-list__description">
+                                    <ul>
                                     {% if 0 in request.properties.choices %}
-                                        <p>Eenmalige uitkering van 4000 euro</p>
+                                        <li>Eenmalige uitkering van 4000 euro</li>
                                     {% endif %}
                                     {% if 1 in request.properties.choices %}
-                                        <p>Uitstel betaling belasting toegevoegde waarde</p>
+                                        <li>Uitstel betaling belasting toegevoegde waarde</li>
                                     {% endif %}
                                     {% if 2 in request.properties.choices %}
-                                        <p>Uitstel betaling inkomsten belasting</p>
+                                        <li>Uitstel betaling inkomsten belasting</li>
                                     {% endif %}
                                     {% if 3 in request.properties.choices %}
-                                        <p>Bijzondere bijstand</p>
+                                        <li>Bijzondere bijstand</li>
                                     {% endif %}
+                                    </ul>
                                 </div>
                             </li>
                         {% endif %}
+                        {% if request.properties.explanation is defined and request.properties.explanation is not empty %}
+                            <li class="definition-list__item definition-list__item--horizontal">
+                                <div class="definition-list__title">
+                                    Toelichting
+                                </div>
+                                <div class="definition-list__description">
+                                    {{ request.properties.explanation }}
+                                </div>
+                            </li>
+                        {% endif %}
+
                     </ul>
                     <a class="btn" href="{{ path('app_default_index') }}">Onderteken en dien in</a>
 
