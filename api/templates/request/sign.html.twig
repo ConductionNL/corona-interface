@@ -16,15 +16,134 @@
     </section>
 
     <div class="row">
-        
         <div class="col-md-8  col-sm-12">
-            <div class="content-background" style="height: 170px;">
+            <div class="content-background">
             	<div class="content">
                     <h2>Ondertekening</h2>
-                    
-                    <p> << overizcht opgegeven gegevens >> </p>
-                    
-                    
+                    <h3>Uw gegevens:</h3>
+                    <ul class="definition-list">
+                        {% if request.properties.email is defined and request.properties.email is not empty %}
+                            <li class="definition-list__item definition-list__item--horizontal">
+                                <div class="definition-list__title">
+                                    E-mail adres
+                                </div>
+                                <div class="definition-list__description">
+                                    <p>{{ request.properties.email }}</p>
+                                </div>
+                            </li>
+                        {% endif %}
+                        {% if request.properties.phone is defined and request.properties.phone is not empty %}
+                            <li class="definition-list__item definition-list__item--horizontal">
+                                <div class="definition-list__title">
+                                    Telefoonnummer
+                                </div>
+                                <div class="definition-list__description">
+                                    <p>{{ request.properties.phone }}</p>
+                                </div>
+                            </li>
+                        {% endif %}
+                        {% if request.properties.leefvorm is defined and request.properties.leefvorm is not empty %}
+                            <li class="definition-list__item definition-list__item--horizontal">
+                                <div class="definition-list__title">
+                                    Leefvorm
+                                </div>
+                                <div class="definition-list__description">
+                                    <p>{{ request.properties.leefvorm }}</p>
+                                </div>
+                            </li>
+                        {% endif %}
+                        {% if request.properties.iban is defined and request.properties.iban is not empty %}
+                            <li class="definition-list__item definition-list__item--horizontal">
+                                <div class="definition-list__title">
+                                    IBAN
+                                </div>
+                                <div class="definition-list__description">
+                                    <p>{{ request.properties.iban }}</p>
+                                </div>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                    <h3>Gegevens van uw bedrijf:</h3>
+                    <ul class="definition-list">
+                        {% if request.properties.kvk is defined and request.properties.kvk is not empty %}
+                            <li class="definition-list__item definition-list__item--horizontal">
+                                <div class="definition-list__title">
+                                    KVK-nummer
+                                </div>
+                                <div class="definition-list__description">
+                                    <p>{{ request.properties.kvk }}</p>
+                                </div>
+                            </li>
+                        {% endif %}
+                        {% if request.properties.companyName is defined and request.properties.companyName is not empty %}
+                            <li class="definition-list__item definition-list__item--horizontal">
+                                <div class="definition-list__title">
+                                    KVK-nummer
+                                </div>
+                                <div class="definition-list__description">
+                                    <p>{{ request.properties.companyName }}</p>
+                                </div>
+                            </li>
+                        {% endif %}
+                        {% if request.properties.postalCode is defined and request.properties.postalCode is not empty and request.properties.houseNumber is defined and request.properties.houseNumber is not empty %}
+                            <li class="definition-list__item definition-list__item--horizontal">
+                                <div class="definition-list__title">
+                                    Adres
+                                </div>
+                                <div class="definition-list__description">
+                                    <p>{{ request.properties.postalCode }} {{ request.properties.houseNumber }}{% if request.properties.houseNumberSuffix is defined and request.properties.houseNumber is not empty %}{{ houseNumberSuffix }}{% endif %}</p>
+                                </div>
+                            </li>
+                        {% endif %}
+                        {% if request.properties.sbi is defined and request.properties.sbi is not empty %}
+                            <li class="definition-list__item definition-list__item--horizontal">
+                                <div class="definition-list__title">
+                                    SBI Code
+                                </div>
+                                <div class="definition-list__description">
+                                    <p>{{ request.properties.sbi }}</p>
+                                </div>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <h3>Aangevraagde ondersteuning</h3>
+                    <ul class="definition-list">
+                        {% if request.properties.choices is defined and request.properties.choices is not empty %}
+                            <li class="definition-list__item definition-list__item--horizontal">
+                                <div class="definition-list__title">
+                                    Aangevraagde maatregelen
+                                </div>
+                                <div class="definition-list__description">
+                                    <ul>
+                                    {% if 0 in request.properties.choices %}
+                                        <li>Eenmalige uitkering van 4000 euro</li>
+                                    {% endif %}
+                                    {% if 1 in request.properties.choices %}
+                                        <li>Uitstel betaling belasting toegevoegde waarde</li>
+                                    {% endif %}
+                                    {% if 2 in request.properties.choices %}
+                                        <li>Uitstel betaling inkomsten belasting</li>
+                                    {% endif %}
+                                    {% if 3 in request.properties.choices %}
+                                        <li>Bijzondere bijstand</li>
+                                    {% endif %}
+                                    </ul>
+                                </div>
+                            </li>
+                        {% endif %}
+                        {% if request.properties.explanation is defined and request.properties.explanation is not empty %}
+                            <li class="definition-list__item definition-list__item--horizontal">
+                                <div class="definition-list__title">
+                                    Toelichting
+                                </div>
+                                <div class="definition-list__description">
+                                    {{ request.properties.explanation }}
+                                </div>
+                            </li>
+                        {% endif %}
+
+                    </ul>
                     <a class="btn" href="{{ path('app_default_index') }}">Onderteken en dien in</a>
 
                 </div><!-- /.content -->
@@ -33,10 +152,10 @@
 
         <div class="col-md-4  col-sm-12">
             <div class="content-background">
-                        
+
                 <div class="content">
-                    <h2>Uw gegevens</h2>                    
-                    
+                    <h2>Uw gegevens</h2>
+
     				<ul class="definition-list">
     					<li class="definition-list__item definition-list__item--horizontal">
     						<div class="definition-list__title">
@@ -51,16 +170,16 @@
     							Achternaam
     						</div>
     						<div class="definition-list__description">
-    							<p>{{ user.naam.geslachtsnaam }}</p> 
+    							<p>{{ user.naam.geslachtsnaam }}</p>
     						</div>
     					</li>
-                        {% if user.naam.voorvoegsel is not empty%}    
+                        {% if user.naam.voorvoegsel is not empty%}
     					<li class="definition-list__item definition-list__item--horizontal">
     						<div class="definition-list__title">
     							Voorvoegsel
     						</div>
     						<div class="definition-list__description">
-    							<p>{{ user.naam.voorvoegsel }}</p> 
+    							<p>{{ user.naam.voorvoegsel }}</p>
     						</div>
     					</li>
     					<li class="definition-list__item definition-list__item--horizontal">
@@ -68,7 +187,7 @@
     							Leeftijd
     						</div>
     						<div class="definition-list__description">
-    							<p>{{ user.leeftijd }}</p> 
+    							<p>{{ user.leeftijd }}</p>
     						</div>
     					</li>
     					<li class="definition-list__item definition-list__item--horizontal">
@@ -76,7 +195,7 @@
     							Geslacht
     						</div>
     						<div class="definition-list__description">
-    							<p>{{ user.geslachtsaanduiding }}</p> 
+    							<p>{{ user.geslachtsaanduiding }}</p>
     						</div>
     					</li>
     					{% endif %}
@@ -92,11 +211,11 @@
     				</ul>
                 </div>
             </div>
-                    
+
             <!-- Page Break -->
             <div style="height: 20px"></div>
-                
-            <div class="content-background">                
+
+            <div class="content-background">
                 <div class="content">
                     <h2>Stappen</h2>
                  	<ul class="list list--timeline list--timeline-compact">
@@ -109,15 +228,15 @@
 
                 </div>
             </div>
-            
-            <!-- 
+
+            <!--
             <div class="content-background background--geel">
                 <div class="content">
                     <button class="btn btn--primary">Primaire knop</button>
                 </div>
             </div>
-            
-            
+
+
             <div class="content-background background--donkergeel">
                 <div class="content">
                 	<button class="btn btn--primary">Primaire knop</button>

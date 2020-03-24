@@ -16,13 +16,13 @@
     </section>
 
     <div class="row">
-        
+
         <div class="col-md-8  col-sm-12">
-        
+
             <div class="content-background">
             	<div class="content">
                     <h2>Gegevens</h2>
-                    
+
                     <form class="form" method="post" action="#">
 
                         <h3>Aanvullende persoonlijke gegeven</h3>
@@ -30,113 +30,113 @@
                             <label class="input__label" for="email">E-mailadres</label>
                             <input required="" type="email" id="email" name="email" class="input__control input__control--text">
                         </div>
-                        
+
                         <div class="input">
                             <label class="input__label" for="email">Telefoon nummer</label>
                             <input required="" type="phone" id="phone" name="phone" class="input__control input__control--text">
                         </div>
-                        
+
                        <div class="input">
-                            <label class="input__label" for="color">Leefvorm</label>
-                            <select id="Leefvorm" name="Leefvorm" class="input__control input__control--m input__control--select"  required="" >
+                            <label class="input__label" for="color">leefvorm</label>
+                            <select id="Leefvorm" name="leefvorm" class="input__control input__control--m input__control--select"  required="" >
                                 <option value="alleenstaande">Alleenstaande</option>
                                 <option value="samenwonend" >Samenwonend</option>
                             </select>
                         </div>
-                        
-                        <h3>Financieële gegevens</h3>
+
+                        <h3>FinanciÃ«le gegevens</h3>
                         <div class="input">
                             <label class="input__label" for="brin">IBAN-nummer</label>
-                            <input type="text" id="brin" class="input__control input__control--m input__control--text">
+                            <input type="text" id="brin" class="input__control input__control--m input__control--text" name="iban">
                         </div>
-                            
+
                         <div class="input">
                             <label class="input__label" for="email">Naam Rekening Houder</label>
                             <input disabled="" type="email" id="email" class="input__control input__control--text">
                         </div>
-                                            
+
                         <h3>Gegevens van uw Onderneming</h3>
                         <div class="input">
                             <label class="input__label" for="brin">Kvk-nummer</label>
-                            <input type="text" id="brin" class="input__control input__control--m input__control--text">
+                            <input type="text" id="brin" name="kvk" class="input__control input__control--m input__control--text">
                             <button class="btn" name="submit" value="kvk">Gegevens ophalen</button>
                         </div>
-                            
+
                         <div class="input">
                             <label class="input__label" for="email">Naam onderneming</label>
-                            <input disabled="" type="email" id="email" class="input__control input__control--text">
+                            <input disabled="" type="text" id="companyName" name="companyName" class="input__control input__control--text">
                         </div>
-                
+
                         <div class="input">
                         	<label class="input__label">Adres gegevens onderneming</label>
-                    
+
                         	<div class="input__control-group">
                         		<div>
                                 	<label class="input__hint" for="address_postal_code">postcode</label>
-                                 	<input aria-label="Postcode" title="Postcode" disabled="" type="text" pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}" id="address_postal_code" class="input__control input__control--six-characters input__control--text">
+                                 	<input aria-label="Postcode" title="Postcode" disabled="" type="text" pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}" id="address_postal_code" class="input__control input__control--six-characters input__control--text" name="postalCode">
                              	</div>
                              	<div>
                               		<label class="input__hint" for="address_number">huisnummer</label>
-                         			<input aria-label="Huisnummer" title="Huisnummer" disabled="" type="number" minlength="1" maxlength="5" id="address_number" class="input__control input__control--five-characters input__control--text">
+                         			<input aria-label="Huisnummer" title="Huisnummer" disabled="" type="number" minlength="1" maxlength="5" id="address_number" class="input__control input__control--five-characters input__control--text" name="houseNumber">
                           		</div>
                                     <div>
                                         <span class="input__hint" for="address_number-addition">toevoeging</span>
-                                        <input aria-label="Toevoeging" title="Toevoeging" disabled=""" type="text" maxlength="5" id="address_number-addition" class="input__control input__control--five-characters input__control--text">
+                                        <input aria-label="Toevoeging" title="Toevoeging" disabled="" type="text" maxlength="5" id="address_number-addition" class="input__control input__control--five-characters input__control--text" name="houseNumberSuffix">
                                     </div>
                                 </div>
-                         </div>    
-                        
+                         </div>
+
                        <div class="input">
                             <label class="input__label" for="color">Branche onderneming (SBI code)</label>
-                            <select id="Leefvorm" name="sbi" class="input__control input__control--m input__control--select" disabled=""">    
+                            <select id="Sbi" name="sbi" class="input__control input__control--m input__control--select" disabled="">
                             {% for code in sbi %}
                                 <option value="{{ code.sbi }}">{{ code.omschrijving }}</option>
                             {% endfor %}
                             </select>
-                        </div>                     
-                         
+                        </div>
+
                         <h3>Aanvragen</h3>
-                        
+
                         <fieldset class="input">
                             <legend class="input__legend">Welke regelingen wilt u aanvragen?</legend>
                             <div class="input__group input__group--checkbox">
-                                <input name="hobbies[]" type="checkbox" id="chkbx1" class="input__control input__control--checkbox">
+                                <input name="choices[]" type="checkbox" id="chkbx1" class="input__control input__control--checkbox" value="0">
                                 <label class="input__label input__label--checkbox" for="chkbx1">Eenmalige uitkering van 4000 euro</label>
                             </div>
                             <div class="input__group input__group--checkbox">
-                                <input name="hobbies[]" type="checkbox" id="chkbx2" class="input__control input__control--checkbox">
-                                <label class="input__label input__label--checkbox" for="chkbx2">Uitstel betaling belating toegevoegde waarde</label>
+                                <input name="choices[]" type="checkbox" id="chkbx2" class="input__control input__control--checkbox" value="1">
+                                <label class="input__label input__label--checkbox" for="chkbx2">Uitstel betaling belasting toegevoegde waarde</label>
                             </div>
                             <div class="input__group input__group--checkbox">
-                                <input name="hobbies[]" type="checkbox" id="chkbx3" class="input__control input__control--checkbox" >
+                                <input name="choices[]" type="checkbox" id="chkbx3" class="input__control input__control--checkbox" value="2">
                                 <label class="input__label input__label--checkbox" for="chkbx3">Uitstel betaling inkomsten belasting</label>
                             </div>
                             <div class="input__group input__group--checkbox">
-                                <input name="hobbies[]" type="checkbox" id="chkbx4" class="input__control input__control--checkbox" >
-                                <label class="input__label input__label--checkbox" for="chkbx3">Bijzondere bijstand</label>
+                                <input name="choices[]" type="checkbox" id="chkbx4" class="input__control input__control--checkbox" value="3">
+                                <label class="input__label input__label--checkbox" for="chkbx4">Bijzondere bijstand</label>
                             </div>
                         </fieldset>
-                        
+
                         <h3>Toelichting</h3>
                         <div class="input">
                             <label class="input__label" for="textarea_voorbeeld">Waarom wilt u van de door uw aangegeven regelingen gebruik maken?</label>
-                            <textarea id="textarea_voorbeeld" class="input__control input__control--m input__control--text"></textarea>
+                            <textarea id="textarea_voorbeeld" class="input__control input__control--m input__control--text" name="explanation"></textarea>
                         </div>
-                
-                        <div class="input"> 
-                            <button type="submit" class="btn" name="submit" value="save">Opslaan</button>  
+
+                        <div class="input">
+                            <button type="submit" class="btn" name="submit" value="save">Opslaan</button>
                             <a class="btn " href="{{ path('app_request_sign') }}">Verder</a> &nbsp;&nbsp;of naar de <a href="{{ path('app_request_new') }}">vorige stap</a>
                         </div>
-                    </form>    
+                    </form>
 
                 </div><!-- /.content -->
             </div><!-- /.content-background -->
         </div><!-- /.col -->
 
         <div class="col-md-4  col-sm-12">
-            <div class="content-background">                        
+            <div class="content-background">
                 <div class="content">
-                    <h2>Uw gegevens</h2>                    
+                    <h2>Uw gegevens</h2>
     				<ul class="definition-list">
     					<li class="definition-list__item definition-list__item--horizontal">
     						<div class="definition-list__title">
@@ -151,16 +151,16 @@
     							Achternaam
     						</div>
     						<div class="definition-list__description">
-    							<p>{{ user.naam.geslachtsnaam }}</p> 
+    							<p>{{ user.naam.geslachtsnaam }}</p>
     						</div>
     					</li>
-                        {% if user.naam.voorvoegsel is not empty%}    
+                        {% if user.naam.voorvoegsel is not empty%}
     					<li class="definition-list__item definition-list__item--horizontal">
     						<div class="definition-list__title">
     							Voorvoegsel
     						</div>
     						<div class="definition-list__description">
-    							<p>{{ user.naam.voorvoegsel }}</p> 
+    							<p>{{ user.naam.voorvoegsel }}</p>
     						</div>
     					</li>
     					<li class="definition-list__item definition-list__item--horizontal">
@@ -168,7 +168,7 @@
     							Leeftijd
     						</div>
     						<div class="definition-list__description">
-    							<p>{{ user.leeftijd }}</p> 
+    							<p>{{ user.leeftijd }}</p>
     						</div>
     					</li>
     					<li class="definition-list__item definition-list__item--horizontal">
@@ -176,7 +176,7 @@
     							Geslacht
     						</div>
     						<div class="definition-list__description">
-    							<p>{{ user.geslachtsaanduiding }}</p> 
+    							<p>{{ user.geslachtsaanduiding }}</p>
     						</div>
     					</li>
     					{% endif %}
@@ -192,11 +192,11 @@
     				</ul>
                 </div>
             </div>
-                    
+
             <!-- Page Break -->
             <div style="height: 20px"></div>
-                
-            <div class="content-background">                
+
+            <div class="content-background">
                 <div class="content">
                     <h2>Stappen</h2>
                  	<ul class="list list--timeline list--timeline-compact">
@@ -208,15 +208,15 @@
                 	</ul>
                 </div>
             </div>
-            
-            <!-- 
+
+            <!--
             <div class="content-background background--geel">
                 <div class="content">
                     <button class="btn btn--primary">Primaire knop</button>
                 </div>
             </div>
-            
-            
+
+
             <div class="content-background background--donkergeel">
                 <div class="content">
                 	<button class="btn btn--primary">Primaire knop</button>

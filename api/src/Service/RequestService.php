@@ -106,7 +106,8 @@ class RequestService
     	$assent['status'] = 'granted';
     	$assent = $this->commonGroundService->createResource($assent, 'https://irc.zaakonline.nl/assents');
 
-    	$request['properties']['partners'][] = $assent['@id'];
+    	$request['properties']['partners'] = $assent['@id'];
+//    	$request['submitters']['brp'] = $user['@id'];
     	$request = $this->commonGroundService->updateResource($request, $request['@id']);
 
     	return $request;

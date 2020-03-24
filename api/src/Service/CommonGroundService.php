@@ -245,7 +245,6 @@ class CommonGroundService
 	public function createResource($resource, $url = null, $async = false)
 	{
 		$url = $this->cleanUrl($url, $resource);
-
 		// Set headers
 		$headers = $this->headers;
 
