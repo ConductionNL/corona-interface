@@ -25,22 +25,41 @@
                     
                     <form class="form" method="post" action="#">
 
-                        <h3>Aanvullende contact gegeven</h3>
+                        <h3>Aanvullende persoonlijke gegeven</h3>
                         <div class="input">
                             <label class="input__label" for="email">E-mailadres</label>
-                            <input required="" type="email" id="email" class="input__control input__control--text">
+                            <input required="" type="email" id="email" name="email" class="input__control input__control--text">
                         </div>
                         
                         <div class="input">
                             <label class="input__label" for="email">Telefoon nummer</label>
-                            <input required="" type="email" id="email" class="input__control input__control--text">
+                            <input required="" type="phone" id="phone" name="phone" class="input__control input__control--text">
+                        </div>
+                        
+                       <div class="input">
+                            <label class="input__label" for="color">Leefvorm</label>
+                            <select id="Leefvorm" name="Leefvorm" class="input__control input__control--m input__control--select"  required="" >
+                                <option value="alleenstaande">Alleenstaande</option>
+                                <option value="samenwonend" >Samenwonend</option>
+                            </select>
+                        </div>
+                        
+                        <h3>Financieële gegevens</h3>
+                        <div class="input">
+                            <label class="input__label" for="brin">IBAN-nummer</label>
+                            <input type="text" id="brin" class="input__control input__control--m input__control--text">
+                        </div>
+                            
+                        <div class="input">
+                            <label class="input__label" for="email">Naam Rekening Houder</label>
+                            <input disabled="" type="email" id="email" class="input__control input__control--text">
                         </div>
                                             
                         <h3>Gegevens van uw Onderneming</h3>
                         <div class="input">
                             <label class="input__label" for="brin">Kvk-nummer</label>
                             <input type="text" id="brin" class="input__control input__control--m input__control--text">
-                            <button class="btn">Gegevens ophalen</button>
+                            <button class="btn" name="submit" value="kvk">Gegevens ophalen</button>
                         </div>
                             
                         <div class="input">
@@ -49,7 +68,7 @@
                         </div>
                 
                         <div class="input">
-                        	<label class="input__label">Adres gegens onderneming</label>
+                        	<label class="input__label">Adres gegevens onderneming</label>
                     
                         	<div class="input__control-group">
                         		<div>
@@ -65,7 +84,16 @@
                                         <input aria-label="Toevoeging" title="Toevoeging" disabled=""" type="text" maxlength="5" id="address_number-addition" class="input__control input__control--five-characters input__control--text">
                                     </div>
                                 </div>
-                         </div>                         
+                         </div>    
+                        
+                       <div class="input">
+                            <label class="input__label" for="color">Branche onderneming (SBI code)</label>
+                            <select id="Leefvorm" name="sbi" class="input__control input__control--m input__control--select" disabled=""">    
+                            {% for code in sbi %}
+                                <option value="{{ code.sbi }}">{{ code.omschrijving }}</option>
+                            {% endfor %}
+                            </select>
+                        </div>                     
                          
                         <h3>Aanvragen</h3>
                         
@@ -96,7 +124,8 @@
                         </div>
                 
                         <div class="input"> 
-                            {# <button type="submit" class="btn ">Verder</button> #} <a class="btn " href="{{ path('app_request_sign') }}">Verder</a> &nbsp;&nbsp;of naar de <a href="{{ path('app_request_new') }}">vorige stap</a>
+                            <button type="submit" class="btn" name="submit" value="save">Opslaan</button>  
+                            <a class="btn " href="{{ path('app_request_sign') }}">Verder</a> &nbsp;&nbsp;of naar de <a href="{{ path('app_request_new') }}">vorige stap</a>
                         </div>
                     </form>    
 
