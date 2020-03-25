@@ -120,7 +120,7 @@ class ApplicationService
     	$request= $this->request->request->get('request');
     	if($request || $request =  $this->request->query->get('request')){
     		$request = $this->commonGroundService->getResource($request);
-    		$requestType = $this->commonGroundService->getResource($request['request_type']);
+    		$requestType = $this->commonGroundService->getResource($request['request_type'], [],true);
 
     		// Validate current reqoust type
     		$requestType = $this->requestService->checkRequestType($request, $requestType);
@@ -131,8 +131,11 @@ class ApplicationService
     		/* @todo translation */
     		$this->flash->add('success', 'Verzoek voor '.$requestType['name'].' ingeladen');
     	}
-
-    	$variables['request'] = $this->session->get('request');
+    	
+    	if($this->session->get('request')){
+    		$variables['request'] = $this->commonGroundService->getResource($this->session->get('request')['@id']);
+    	}
+    	
     	$variables['requestType'] = $this->session->get('requestType');
 
     	return $variables;

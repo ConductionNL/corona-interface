@@ -538,7 +538,6 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
-          format: uuid
         name:
           description: 'The name of this example property'
           type: string
@@ -584,7 +583,6 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
-          format: uuid
         name:
           description: 'The name of this example property'
           type: string
