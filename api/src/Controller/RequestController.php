@@ -20,12 +20,11 @@ use App\Service\ApplicationService;
  */
 class RequestController extends AbstractController
 {
-
     /**
      * @Route("/new")
      * @Template
      */
-	public function newAction(Request $httpRequest, ApplicationService $applicationService,  CommonGroundService $commonGroundService)
+	public function newAction(Request $request, ApplicationService $applicationService,  CommonGroundService $commonGroundService)
     {
     	$variables = $applicationService->getVariables();
 
@@ -60,7 +59,14 @@ class RequestController extends AbstractController
 			// If there are any sub data sources the need to be removed below in order to save the resource
 			// unset($resource['somedatasource'])
 
-			$variables['resource'] = $commonGroundService->saveResource($resource);
+			$variables['resource'] = $commonGroundService->saveResource($resource);			
+			
+			if($request->query->get('submit') == "kvk"){
+				return $variables;
+			}
+			else{
+				return $this->redirect($this->generateUrl('app_request_sign'));		
+			}
 
 		}
 
@@ -71,19 +77,40 @@ class RequestController extends AbstractController
 	 * @Route("/sign")
      * @Template
 	 */
-	public function signAction(Request $httpRequest, ApplicationService $applicationService,  CommonGroundService $commonGroundService)
+	public function signAction(Request $request, ApplicationService $applicationService,  CommonGroundService $commonGroundService)
 	{
 		$variables = $applicationService->getVariables();
-
+		
+		// Lets see if there is a post to procces
+		if ($request->isMethod('POST')) {
+			
+			$resource['@id'] = $variables['request']['@id'];
+			$resource['id'] = $variables['request']['id'];
+			$resource['status'] = 'submitted';
+			
+			$variables['resource'] = $commonGroundService->saveResource($resource);
+			return $this->redirect($this->generateUrl('app_request_processing'));		
+		}
+		
 		return $variables;
 	}
-
+	
+	/**
+	 * @Route("/processing")
+	 * @Template
+	 */
+	public function processingAction(Request $request, ApplicationService $applicationService,  CommonGroundService $commonGroundService)
+	{
+		$variables = $applicationService->getVariables();
+		
+		return $variables;
+	}
 
     /**
      * @Route("/")
      * @Template
      */
-    public function indexAction(Session $session, $slug = false, Request $httpRequest, CommonGroundService $commonGroundService, ApplicationService $applicationService)
+	public function indexAction(Session $session, $slug = false, Request $request, CommonGroundService $commonGroundService, ApplicationService $applicationService)
     {
     	$variables = $applicationService->getVariables();
 

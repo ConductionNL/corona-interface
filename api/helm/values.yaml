@@ -10,7 +10,9 @@ settings:
   version: V.0.1
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
   repro: 'https://github.com/ConductionNL/corona-interface'
-  domain: corona.conduction.nl  
+  domains:
+    - corona.conduction.nl 
+    - bbz.conduction.nl 
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands

@@ -47,23 +47,23 @@
                         <h3>Financiële gegevens</h3>
                         <div class="input">
                             <label class="input__label" for="brin">IBAN-nummer</label>
-                            <input type="text" id="brin" class="input__control input__control--m input__control--text" name="iban">
+                            <input type="text" id="iban" name="iban" class="input__control input__control input__control--text" name="iban">
                         </div>
 
                         <div class="input">
                             <label class="input__label" for="email">Naam Rekening Houder</label>
-                            <input disabled="" type="email" id="email" class="input__control input__control--text">
+                            <input type="text" id="iban_holder" namw="iban_holder" class="input__control input__control--text">
                         </div>
 
                         <h3>Gegevens van uw Onderneming</h3>
                         <div class="input">
-                            <label class="input__label" for="brin">Kvk-nummer</label>
-                            <input type="text" id="brin" name="kvk" class="input__control input__control--m input__control--text">
+                            <label class="input__label" for="kvk">Kvk-nummer</label>
+                            <input type="text" id="kvk" name="kvk" class="input__control input__control--m input__control--text">
                             <button class="btn" name="submit" value="kvk">Gegevens ophalen</button>
                         </div>
 
                         <div class="input">
-                            <label class="input__label" for="email">Naam onderneming</label>
+                            <label class="input__label" for="companyName">Naam onderneming</label>
                             <input disabled="" type="text" id="companyName" name="companyName" class="input__control input__control--text">
                         </div>
 
@@ -72,23 +72,23 @@
 
                         	<div class="input__control-group">
                         		<div>
-                                	<label class="input__hint" for="address_postal_code">postcode</label>
+                                	<label class="input__hint" for="postalCode">postcode</label>
                                  	<input aria-label="Postcode" title="Postcode" disabled="" type="text" pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}" id="address_postal_code" class="input__control input__control--six-characters input__control--text" name="postalCode">
                              	</div>
                              	<div>
-                              		<label class="input__hint" for="address_number">huisnummer</label>
+                              		<label class="input__hint" for="houseNumber">huisnummer</label>
                          			<input aria-label="Huisnummer" title="Huisnummer" disabled="" type="number" minlength="1" maxlength="5" id="address_number" class="input__control input__control--five-characters input__control--text" name="houseNumber">
                           		</div>
                                     <div>
-                                        <span class="input__hint" for="address_number-addition">toevoeging</span>
+                                        <span class="input__hint" for="houseNumberSuffix">toevoeging</span>
                                         <input aria-label="Toevoeging" title="Toevoeging" disabled="" type="text" maxlength="5" id="address_number-addition" class="input__control input__control--five-characters input__control--text" name="houseNumberSuffix">
                                     </div>
                                 </div>
                          </div>
 
                        <div class="input">
-                            <label class="input__label" for="color">Branche onderneming (SBI code)</label>
-                            <select id="Sbi" name="sbi" class="input__control input__control--m input__control--select" disabled="">
+                            <label class="input__label" for="sbi">Branche onderneming (SBI code)</label>
+                            <select id="sbi" name="sbi" class="input__control input__control--m input__control--select" disabled="">
                             {% for code in sbi %}
                                 <option value="{{ code.sbi }}">{{ code.omschrijving }}</option>
                             {% endfor %}
@@ -100,32 +100,31 @@
                         <fieldset class="input">
                             <legend class="input__legend">Welke regelingen wilt u aanvragen?</legend>
                             <div class="input__group input__group--checkbox">
-                                <input name="choices[]" type="checkbox" id="chkbx1" class="input__control input__control--checkbox" value="0">
+                                <input name="choices[]" type="checkbox" id="chkbx1" class="input__control input__control--checkbox" value="Eenmalige uitkering van 4000 euro">
                                 <label class="input__label input__label--checkbox" for="chkbx1">Eenmalige uitkering van 4000 euro</label>
                             </div>
                             <div class="input__group input__group--checkbox">
-                                <input name="choices[]" type="checkbox" id="chkbx2" class="input__control input__control--checkbox" value="1">
+                                <input name="choices[]" type="checkbox" id="chkbx2" class="input__control input__control--checkbox" value="Uitstel betaling belasting toegevoegde waarde">
                                 <label class="input__label input__label--checkbox" for="chkbx2">Uitstel betaling belasting toegevoegde waarde</label>
                             </div>
                             <div class="input__group input__group--checkbox">
-                                <input name="choices[]" type="checkbox" id="chkbx3" class="input__control input__control--checkbox" value="2">
+                                <input name="choices[]" type="checkbox" id="chkbx3" class="input__control input__control--checkbox" value="Uitstel betaling inkomsten belasting">
                                 <label class="input__label input__label--checkbox" for="chkbx3">Uitstel betaling inkomsten belasting</label>
                             </div>
                             <div class="input__group input__group--checkbox">
-                                <input name="choices[]" type="checkbox" id="chkbx4" class="input__control input__control--checkbox" value="3">
+                                <input name="choices[]" type="checkbox" id="chkbx4" class="input__control input__control--checkbox" value="Bijzondere Bijstand">
                                 <label class="input__label input__label--checkbox" for="chkbx4">Bijzondere bijstand</label>
                             </div>
                         </fieldset>
 
                         <h3>Toelichting</h3>
                         <div class="input">
-                            <label class="input__label" for="textarea_voorbeeld">Waarom wilt u van de door uw aangegeven regelingen gebruik maken?</label>
-                            <textarea id="textarea_voorbeeld" class="input__control input__control--m input__control--text" name="explanation"></textarea>
+                            <label class="input__label" for="explanation">Waarom wilt u van de door uw aangegeven regelingen gebruik maken?</label>
+                            <textarea id="textarea_voorbeeld" class="input__control input__control input__control--text" name="explanation"></textarea>
                         </div>
 
                         <div class="input">
-                            <button type="submit" class="btn" name="submit" value="save">Opslaan</button>
-                            <a class="btn " href="{{ path('app_request_sign') }}">Verder</a> &nbsp;&nbsp;of naar de <a href="{{ path('app_request_new') }}">vorige stap</a>
+                            <button type="submit" class="btn" name="submit" value="save">Opslaan</button> of naar de <a href="{{ path('app_request_new') }}">vorige stap</a>
                         </div>
                     </form>
 

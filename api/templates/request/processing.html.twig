@@ -2,43 +2,41 @@
 
 {% block content %}
 
+    <section class="row">
+        <div class="col-md-12">
+            <div class="content">
+                <header class="content__header">
+                    <a class="backlink" href="{{ path('app_default_index') }}">Home</a>
+                    <header class="content__header">
+                        <h1 class="content__header-title">{{ request.reference }}</h1>
+                    </header>
+                </header>
+            </div><!-- ./content -->
+        </div><!-- ./col -->
+    </section>
 
     <div class="row">
         
-        	<div class="col-md-8 col-sm-12">
-              <div class="notification notification--warning">
-                <div class="notification__content">
-                  <div class="notification__type">LET OP</div>
-                  <h2 class="notification__title">Behoort u tot de doelgroep cruciale beroepen?</h2>
-                  <span>Dan heeft u nog steeds recht op kinderopvang, u kunt <a href="#">hier</a> lezen hoe en aan wie u dit kan doorgeven.</span>
-                </div>
-              </div>
-
-            <div class="content-background" >
+        <div class="col-md-8  col-sm-12">
+        
+            <div class="content-background">
             	<div class="content">
-                    <h2>Proof of concept BBZ Interface</h2>
-                    <p>Deze applicatie dient als proof of concept voor het centraal verzamelen en decentraal verdelen van informatie door de overheid. Waarbij het uitgangspunt is dat er &eacute;&eacute;n loket is voor burgers om informatie door te geven in &eacute;&eacute;n voor de burger samenhangend formulier.<br /> <br /> Centrale en decentrale overheden kunnen deze informatie vervolgens verwerken, met andere woorden de verwerking en wie dat doet (Belastingdienst, Gemeente, RVO etc) is een overheids probleem waar de burger niet mee moeten lastig vallen.<br /> <br /> In verlengde daarvan kunnen we spelen met de gedachte om burgers via vertrouwde overheid omgevingen informatie ter beschikking van derden te stellen (rodekruis, voedselbanken en overige vrijwilligers organisaties) 
-                    <br /> <br /> Waardes</p>
-                    <ul>
-                        <li>Vertrouwen (overheid beheerd gegevens, digi&rsquo;s, herkenbaarheid)</li>
-                        <li>&Eacute;&eacute;n loket (waar vanuit meerdere diensten van gegevens kunnen worden voorzien)</li>
-                        <li>Deelbaarheid (burger kan gegevens inzien en ontsluiten)</li>
-                        <li>Opensource</li>
-                        <li>Nieuwe technologie (alles aan de hand van gecontaineriseerde rest api&rsquo;s en microservices)</li>
-                    </ul>
-					<p>Dit alles kan worden gerealiseerd door een escalatie van de door gemeenten onder commonground gerealiseerde architectuur.</p>
-
+                    <h2>Uw verzoek is in behandeling</h2>
+                    
+                    <p>U ontvangt zo spoedig mogenlijk uitsluitsel</p>
+                    
+                    <a href="{{ path('app_default_index') }}">terug naar hoofdscherm</a>
+                                        
                 </div><!-- /.content -->
             </div><!-- /.content-background -->
         </div><!-- /.col -->
 
         <div class="col-md-4  col-sm-12">
-        
-            {% if user is not empty%}                
             <div class="content-background">
                         
                 <div class="content">
-                    <h2>Uw gegevens</h2>  
+                    <h2>Uw gegevens</h2>                    
+                    
     				<ul class="definition-list">
     					<li class="definition-list__item definition-list__item--horizontal">
     						<div class="definition-list__title">
@@ -97,32 +95,17 @@
                     
             <!-- Page Break -->
             <div style="height: 20px"></div>
-            
-            {% endif %}
                 
-            <div class="content-background background--donkerblauw" style="height: 306px;">         
+            <div class="content-background">                
                 <div class="content">
-                    <h2>Aanvraag doen</h2>
-                    {% if user is not empty%}        
-                    <ul class="list list--links list--chevrons">
-                        <li>
-                            <a href="{{  path('app_request_new', { 'requestType': 'https://vtc.dev.zaakonline.nl/request_types/90ad9841-bb57-44ee-beaa-b3e0a144626e' }) }}">Ondersteunings aanvraag ZZPers</a>
-                        </li>
-                        <!-- 
-                        <li>
-                            <a href="{{  path('app_request_new', { 'requestType': 'https://vtc.dev.zaakonline.nl/request_types/d78197df-af77-4b5e-bed0-054cba047550' }) }}">Aanvraag bijzondere bijstand</a>
-                        </li>
-                        <li>
-                            <a href="{{  path('app_request_new', { 'requestType': 'https://vtc.dev.zaakonline.nl/request_types/64127a29-c452-4600-a9a0-b3f827b4d2e5' }) }}">Ik wil helpen</a>
-                        </li>
-                        <li>
-                            <a href="{{  path('app_request_new', { 'requestType': 'https://vtc.dev.zaakonline.nl/request_types/2201ebbd-f2b0-4ece-88e0-18ba0d2949e0' }) }}">Ik heb hulp nodig</a>
-                        </li> -->
-                    </ul>
-                    {% else %}                    
-                    	U dient eerst in te loggen voordat u een aanvrag kan doen.
-                    {% endif %}
-
+                    <h2>Stappen</h2>
+                 	<ul class="list list--timeline list--timeline-compact">
+                		<li class="list__item">Instructie</li>
+                		<li class="list__item">Gegevens verzamelen</li>
+                		<li class="list__item">Ondertekening</li>
+                		<li class="list__item list__item--active" >In behandeling</li>
+                		<li class="list__item list__item--disabled">Uitsluitsel</li>
+                	</ul>
                 </div>
             </div>
             
