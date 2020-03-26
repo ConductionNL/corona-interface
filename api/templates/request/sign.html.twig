@@ -116,18 +116,9 @@
                                 </div>
                                 <div class="definition-list__description">
                                     <ul>
-                                    {% if 0 in request.properties.choices %}
-                                        <li>Eenmalige uitkering van 4000 euro</li>
-                                    {% endif %}
-                                    {% if 1 in request.properties.choices %}
-                                        <li>Uitstel betaling belasting toegevoegde waarde</li>
-                                    {% endif %}
-                                    {% if 2 in request.properties.choices %}
-                                        <li>Uitstel betaling inkomsten belasting</li>
-                                    {% endif %}
-                                    {% if 3 in request.properties.choices %}
-                                        <li>Bijzondere bijstand</li>
-                                    {% endif %}
+                                    {% for choice in request.properties.choices %}
+                                        <li>{{ choice }}</li>
+                                    {% endfor %}
                                     </ul>
                                 </div>
                             </li>
@@ -144,7 +135,12 @@
                         {% endif %}
 
                     </ul>
-                    <a class="btn" href="{{ path('app_default_index') }}">Onderteken en dien in</a>
+
+                    <form class="form" method="post" action="#">
+                        <div class="input">
+                            <button type="submit" class="btn" name="submit" value="sign">Onderteken en indienen</button>
+                        </div>
+                    </form>
 
                 </div><!-- /.content -->
             </div><!-- /.content-background -->
@@ -219,10 +215,10 @@
                 <div class="content">
                     <h2>Stappen</h2>
                  	<ul class="list list--timeline list--timeline-compact">
-                		<li class="list__item ">Instructie</li>
+                		<li class="list__item">Instructie</li>
                 		<li class="list__item">Gegevens verzamelen</li>
-                		<li class="list__item list__item--active">Ondertekening</li>
-                		<li class="list__item list__item--disabled" >In behandeling</li>
+                		<li class="list__iteml ist__item--active">Ondertekening</li>
+                		<li class="list__item" >In behandeling</li>
                 		<li class="list__item list__item--disabled">Uitsluitsel</li>
                 	</ul>
 

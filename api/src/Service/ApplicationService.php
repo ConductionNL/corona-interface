@@ -131,8 +131,11 @@ class ApplicationService
     		/* @todo translation */
     		$this->flash->add('success', 'Verzoek voor '.$requestType['name'].' ingeladen');
     	}
-    	$variables['request'] = $this->commonGroundService->getResource($this->session->get('request')['@id']);
-
+    	
+    	if($this->session->get('request')){
+    		$variables['request'] = $this->commonGroundService->getResource($this->session->get('request')['@id']);
+    	}
+    	
     	$variables['requestType'] = $this->session->get('requestType');
 
     	return $variables;
