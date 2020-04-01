@@ -23,7 +23,7 @@ spec:
   rules:
   {{- range  .Values.settings.domains  }}
     {{- if eq $.Values.settings.env "prod" }}
-      -   host: {{ $.Values.settings.name }}.{{ . }}
+      -   host: {{ . }}
           http:
               paths:
                       - backend:
