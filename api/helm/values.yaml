@@ -5,18 +5,18 @@
 settings:
   registryBase: docker.io/conduction
   projectName: bzk-corona-ui
-  name: bzk-corona-ui
-  title: BBZ Formulier
+  name: corona-ui
+  title: Corona Informatie
   version: V.0.1
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
-  repro: https://github.com/ConductionNL/corona-ui
-  demo: bbz.conduction.nl
-  container: https://hub.docker.com/repository/docker/conduction/vtc-php
-  subdomain: bbz  
+  repro: https://github.com/ConductionNL/corona-interface
+  demo: developer.conduction.nl
+  container: 
+  subdomain:   
   domains:
-    - bbz.conduction.nl
     - corona.conduction.nl
-  domainsJson: ["bbz.conduction.nl","corona.conduction.nl"]
+    - bbz.conduction.nl
+  domainsJson: ["corona.conduction.nl","bbz.conduction.nl"]
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands
@@ -27,7 +27,7 @@ settings:
   debug: 1
   replicaCount: 1
   corsAllowOrigin: ['*']
-  trustedHosts: '127.0.0.1$|^(.+\.)?conduction\.nl$|^(.+\.)?huwelijksplanner\.online$|^(.+\.)?larping\.eu$|^(.+\.)?common-ground\.dev$|^(.+\.)?trouwplanner\.online$|^(.+\.)?zaakonline\.nl$|localhost'
+  trustedHosts: '^(.+\.)?conduction\.nl$|^(.+\.)?huwelijksplanner\.online$|^(.+\.)?larping\.eu$|^(.+\.)?common-ground\.dev$|^(.+\.)?trouwplanner\.online$|^(.+\.)?zaakonline\.nl$|localhost'
   pullPolicy: Always
   # You will need these proxies on kubernetes
   trustedProxies:
@@ -46,12 +46,12 @@ settings:
   archiveEnabled: false
 
 security:
-  commongroundId: "9329d8d0-1d5e-433c-bb47-6991053c7fcb"
-  commongroundKey: "9329d8d0-1d5e-433c-bb47-6991053c7fcb"
+  commongroundId: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
+  commongroundKey: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
   applicationKey: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
-  userKey: "79d5b14c-70ab-41fb-ac02-917e3288870b"
-  authorisationProviderUser: https://uc.zaakonline.nl
-  authorisationProviderApplication: https://ac.zaakonline.nl
+  userKey: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
+  authorisationProviderUser: https://uc.conduction.nl
+  authorisationProviderApplication: https://uc.conduction.nl
 
 
 php:
